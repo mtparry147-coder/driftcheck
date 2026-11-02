@@ -1,0 +1,61 @@
+name: Bug report
+description: Something crashed, reported the wrong thing, or was missed
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. A minimal reproduction is the difference between a
+        fix this week and a fix that never happens.
+
+  - type: input
+    id: version
+    attributes:
+      label: driftcheck version
+      description: Output of `driftcheck --version`
+      placeholder: 0.1.0
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python version and OS
+      placeholder: 3.12.4 on Ubuntu 24.04
+    validations:
+      required: true
+
+  - type: textarea
+    id: command
+    attributes:
+      label: Command you ran
+      render: console
+      placeholder: driftcheck path/to/project --strict
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Paste the output, including the exit code.
+      render: console
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: |
+        The smallest `pyproject.toml` and supporting files that trigger the
+        behaviour. Remove anything proprietary first.
+      render: toml

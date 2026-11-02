@@ -1,0 +1,46 @@
+name: Feature request
+description: Propose a new check, option, or output format
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        driftcheck is deliberately small and quiet, so proposals that add a check
+        need a real failure they would have caught.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What goes wrong today?
+      description: Describe the drift or mistake, not the feature.
+      placeholder: |
+        Our docs claim Python 3.10 but requires-python says 3.11, and nothing
+        notices until a user files a bug.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What should driftcheck do?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: false_positive_risk
+    attributes:
+      label: How likely is a false positive?
+      description: Checks that cannot be certain should skip rather than guess.
+      options:
+        - Low - the files always agree when the project is correct
+        - Medium - there are legitimate ways to disagree
+        - High - this is a matter of taste
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Including existing tools that already do this.

@@ -1,0 +1,26 @@
+name: driftcheck
+description: Check that a project's versions, dependencies, and Python support claims agree.
+branding:
+  icon: check-circle
+  color: blue
+
+inputs:
+  path:
+    description: Directory containing pyproject.toml
+    required: false
+    default: "."
+  args:
+    description: Extra arguments passed to driftcheck
+    required: false
+    default: "--strict"
+
+runs:
+  using: composite
+  steps:
+    - name: Install driftcheck
+      shell: bash
+      run: python -m pip install --quiet "$GITHUB_ACTION_PATH"
+
+    - name: Check for drift
+      shell: bash
+      run: driftcheck "${{ inputs.path }}" ${{ inputs.args }}
