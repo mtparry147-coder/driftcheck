@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import unittest
 
 from helpers import BASE_PROJECT, ProjectTestCase
 
